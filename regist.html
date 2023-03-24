@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+  fieldset{
+    text-align: center;
+    width: 300px;
+    margin: auto;
+    margin-top: 150px;
+  }
+  input{
+    margin-top: 5px;
+  }
+  body{
+    background-image: url('./wb_20221209152653.jpg');
+    background-size: cover;
+    filter: alpha(opacity=50);
+  }
+</style>
+ <script src="./jquery-3.4.1.min.js"></script>
+ <script>
+    function doRegist(){
+        //注册用户名和密码
+        //获取用户名和密码
+        var user=$('#user').val();
+        var pwd=$('#pass').val();
+        var repwd=$('#repass').val();
+        var phone=$('#phone').val();
+        //使用ajax将数据传到后台
+        //组装data数据:username=coco&password=123
+        var data="user="+user+"&pass="+pwd+"&repass="+repwd+"&phone="+phone;
+        $.post(
+            'regist.php',
+            data,
+            function(data){
+                alert(data);
+                if(data=="Inconsistent passwords")
+                {
+                  alert("密码不一致");
+                  location.href='./regist.html';
+                }
+                else if(data=="User exists")
+                {
+                  alert("用户已存在");
+                  location.href='./regist.html';
+                }
+                else if(data=="login success")
+                {
+                  alert("注册成功");
+                  location.href='./sign.html';
+                }
+                else if(data=="Illegal mobile phone number")
+                {
+                  alert("手机号无效");
+                  location.href='./regist.html';
+                }
+                else if(data=="User or password is empty")
+                {
+                  alert("用户名和密码不能为空");
+                  location.href='./regist.html';
+                }
+                else{
+                  alert("注册异常,请联系管理员")
+                  location.href='./regist.html';
+                }
+            }
+        )
+    }
+ </script>
+</head>
+<body>
+    <fieldset>
+      <label for="" style="color:red ;font-size:30px ;">X神黑客技术联盟</label>
+      <div ><input type="text" name="username" id="user" placeholder="用户名" ></div>
+      <div ><input type="password" name="password" id="pass" placeholder="密码"></div>
+      <div ><input type="password" name="repassword" id="repass" placeholder="确认密码"></div>
+      <div ><input type="tel" name="tel" id="phone" placeholder="请输入手机号"></div>
+      <div> <button type="submit" value="注册" onclick="doRegist()">注册</button></div>
+    </fieldset>
+</body>
+</html>

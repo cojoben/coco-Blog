@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+<style>
+  fieldset{
+    text-align: center;
+    width: 300px;
+    margin: auto;
+    margin-top: 150px;
+  }
+  input{
+    margin-top: 5px;
+  }
+  body{
+    background-image: url('./wb_20221209152653.jpg');
+    background-size: cover;
+    filter: alpha(opacity=50);
+  }
+</style>
+ 
+</head>
+<body>
+  <form action="login.php" method="POST" >
+    <fieldset>
+      <label for="" style="color:red ;font-size:30px ;">X神黑客技术联盟</label>
+      <div ><input type="text" name="username" id="user" placeholder="Usr" ></div>
+      <div ><input type="password" name="password" id="pass" placeholder="Pass"></div>
+      <div ><input type="code" name="vcode" id="code" placeholder="Code"></div>
+      <div><img src="./code.php" alt="" style="margin-top: 5px;"></div>
+      <div> <button type="submit" value="登录">登录</button></div>
+    </fieldset>
+</form>
+</body>
+</html>
